@@ -218,19 +218,19 @@ namespace RetroBar
         private void ThemesWatcher_Created(object sender, FileSystemEventArgs e)
         {
             string newTheme = Path.GetFileNameWithoutExtension(e.FullPath);
-            Dispatcher.BeginInvoke(() => 
+            Dispatcher.BeginInvoke(new Action(() => 
             {
                 if (!cboThemeSelect.Items.Contains(newTheme))
                 {
                     cboThemeSelect.Items.Add(newTheme);
                 }
-            });
+            }));
         }
 
         private void ThemesWatcher_Deleted(object sender, FileSystemEventArgs e)
         {
             string removedTheme = Path.GetFileNameWithoutExtension(e.FullPath);
-            Dispatcher.BeginInvoke(() =>
+            Dispatcher.BeginInvoke(new Action(() => 
             {
                 if (cboThemeSelect.Items.Contains(removedTheme))
                 {
@@ -240,14 +240,14 @@ namespace RetroBar
                     }
                     cboThemeSelect.Items.Remove(removedTheme);
                 }
-            });
+            }));
         }
 
         private void ThemesWatcher_Renamed(object sender, RenamedEventArgs e)
         {
             string removedTheme = Path.GetFileNameWithoutExtension(e.OldFullPath);
             string newTheme = Path.GetFileNameWithoutExtension(e.FullPath);
-            Dispatcher.BeginInvoke(() =>
+            Dispatcher.BeginInvoke(new Action(() => 
             {
                 if (cboThemeSelect.Items.Contains(removedTheme))
                 {
@@ -261,7 +261,7 @@ namespace RetroBar
                 {
                     cboThemeSelect.Items.Add(newTheme);
                 }
-            });
+            }));
         }
 
         private void LoadVersion()

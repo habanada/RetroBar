@@ -139,7 +139,7 @@ namespace RetroBar.Utilities
         {
             try
             {
-                System.Text.StringBuilder stringBuilder = new(4096);
+                System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder(4096);
                 int size = stringBuilder.Capacity;
                 if (QueryFullProcessImageName(processHandle, 0, stringBuilder, ref size))
                 {

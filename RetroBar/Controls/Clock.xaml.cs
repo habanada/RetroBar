@@ -206,8 +206,8 @@ namespace RetroBar.Controls
             switch (Settings.Instance.ClockClickAction)
             {
                 case ClockClickOption.OpenModernCalendar:
-                    Point screenPosition = PointToScreen(new(0, 0));
-                    ManagedShell.Interop.NativeMethods.Rect rect = new(
+                    Point screenPosition = PointToScreen(new Point(0, 0));
+                    ManagedShell.Interop.NativeMethods.Rect rect = new ManagedShell.Interop.NativeMethods.Rect(
                         (int)screenPosition.X, (int)screenPosition.Y,
                         (int)(screenPosition.X + RenderSize.Width),
                         (int)(screenPosition.Y + RenderSize.Height)

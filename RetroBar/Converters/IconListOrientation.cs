@@ -11,7 +11,8 @@ namespace RetroBar.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            bool horizontal = Settings.Instance.Edge is AppBarEdge.Top or AppBarEdge.Bottom;
+            bool horizontal = Settings.Instance.Edge == AppBarEdge.Top
+                           || Settings.Instance.Edge == AppBarEdge.Bottom;
             int rows = Settings.Instance.RowCount;
 
             if (horizontal && rows > 1)

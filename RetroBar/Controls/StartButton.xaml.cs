@@ -1,5 +1,8 @@
 ﻿#nullable enable
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -7,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using ManagedShell.Common.Helpers;
 using ManagedShell.Interop;
+using Microsoft.Win32;
 using RetroBar.Utilities;
 
 namespace RetroBar.Controls
@@ -23,6 +27,37 @@ namespace RetroBar.Controls
 
         public static DependencyProperty HostProperty = DependencyProperty.Register(nameof(Host), typeof(Taskbar), typeof(StartButton));
         public static DependencyProperty StartMenuMonitorProperty = DependencyProperty.Register(nameof(StartMenuMonitor), typeof(StartMenuMonitor), typeof(StartButton));
+
+
+        private void TryOpenClassicShell()
+        {
+            string exePath = Settings.Instance.ClassicShellPath;
+
+            // 1. Benutzer-Pfad aus Settings.json prüfen
+            if (!string.IsNullOrEmpty(exePath) && File.Exists(exePath))
+            {
+                Process.Start(exePath, "-open");
+                return;
+            }
+
+            // 2. Registry prüfen
+            string regPath = Registry.GetValue(
+                @"HKEY_LOCAL_MACHINE\SOFTWARE\IvoSoft\ClassicStartMenu",
+                "Path", null) as string;
+
+            if (!string.IsNullOrEmpty(regPath))
+            {
+                string exe = Path.Combine(regPath, "ClassicStartMenu.exe");
+                if (File.Exists(exe))
+                {
+                    Process.Start(exe, "-open");
+                    return;
+                }
+            }
+
+            // 3. Fallback: Hotkey senden
+            KeyboardHelper.SendWinShift();
+        }
 
         public Taskbar Host
         {
@@ -72,14 +107,27 @@ namespace RetroBar.Controls
             pendingOpenTimer.Stop();
         }
 
+
         private void Start_OnClick(object sender, RoutedEventArgs e)
         {
             if (allowOpenStart)
             {
-                OpenStartMenu();
+                //   OpenStartMenu();
+                if (Settings.Instance.UseClassicShell)
+                {
+                    TryOpenClassicShell();
+                    SetStartMenuState(false);
+
+                    // ShowClassicShellMenu();
+                    // Process.Start(@"C:\Program Files\Classic Shell\ClassicStartMenu.exe", "-open");
+                }
+                else
+                {
+                    ShellHelper.ShowStartMenu();
+                }
                 return;
             }
-
+          
             SetStartMenuState(false);
         }
 

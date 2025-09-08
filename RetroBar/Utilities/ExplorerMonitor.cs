@@ -40,7 +40,7 @@ namespace RetroBar.Utilities
             {
                 if (m.Msg == WM_TASKBARCREATEDMESSAGE)
                 {
-                    Dispatcher.CurrentDispatcher.BeginInvoke(() => {
+                    Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => {
                         try
                         {
                             // Reopen taskbars if explorer.exe is restarted.
@@ -53,7 +53,7 @@ namespace RetroBar.Utilities
                         {
                             ShellLogger.Warning($"Error handling TaskbarCreated message on ExplorerMonitor: {ex.Message}");
                         }
-                    });
+                    }));
                 }
 
                 base.WndProc(ref m); // Call the base class to process other messages so we dont accidentally cause crashes or bugs.

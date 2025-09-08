@@ -65,7 +65,7 @@ namespace RetroBar.Utilities
         {
             internal bool IsRegistered => _registeredHotkeys.Count > 0;
             private readonly HotkeyManager _manager;
-            private readonly HashSet<int> _registeredHotkeys = [];
+            private readonly HashSet<int> _registeredHotkeys = new HashSet<int>();
             private const int WMTRAY_UNREGISTERHOTKEY = (int)WM.USER + 231;
             private List<TrayHotkey.Entry> _trayHotkeyTable;
             private bool _unregisterFromExplorer = true;
@@ -147,7 +147,7 @@ namespace RetroBar.Utilities
             private void LoadExplorerResources()
             {
                 // Initialize with empty table as fallback
-                _trayHotkeyTable = [];
+                _trayHotkeyTable = new List<TrayHotkey.Entry>();
                 _trayWindow = IntPtr.Zero;
 
                 TryFindTrayWindow();

@@ -10,7 +10,7 @@ namespace RetroBar.Utilities
     {
         private const SetWindowPosFlags NoPosFlags = SetWindowPosFlags.SWP_NOSIZE | SetWindowPosFlags.SWP_NOACTIVATE | SetWindowPosFlags.SWP_NOZORDER;
 
-        private static readonly Lazy<Type> AeroClockType = new(() => Type.GetTypeFromCLSID(new("A323554A-0FE1-4E49-AEE1-6722465D799F")));
+        private static readonly Lazy<Type> AeroClockType = new Lazy<Type>(() => Type.GetTypeFromCLSID(new Guid("A323554A-0FE1-4E49-AEE1-6722465D799F")));
         private static object _aeroClockInstance;
 
         [ComImport, Guid("7A5FCA8A-76B1-44C8-A97C-E7173CCA5F4F"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

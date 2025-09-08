@@ -28,7 +28,7 @@ namespace RetroBar.Utilities
 
         private static string _settingsPath = "settings.json".InLocalAppData();
         private static bool _isInitializing = true;
-        private static SettingsManager<Settings> _settingsManager = new(_settingsPath, new Settings());
+        private static SettingsManager<Settings> _settingsManager = new SettingsManager<Settings>(_settingsPath, new Settings());
 
         private bool _migrationPerformed = false;
         public bool MigrationPerformed { get => _migrationPerformed; }
@@ -99,7 +99,18 @@ namespace RetroBar.Utilities
             get => _showInputLanguage;
             set => Set(ref _showInputLanguage, value);
         }
-
+        private bool _useClassicShell = false;
+        public bool UseClassicShell
+        {
+            get => _useClassicShell;
+            set => Set(ref _useClassicShell, value);
+        }
+        private string _classicShellPath = @"C:\Program Files\Classic Shell\ClassicStartMenu.exe";
+        public string ClassicShellPath
+        {
+            get => _classicShellPath;
+            set => Set(ref _classicShellPath, value);
+        }
         private bool _showClock = true;
         public bool ShowClock
         {
@@ -234,7 +245,7 @@ namespace RetroBar.Utilities
             set => Set(ref _taskbarWidthLimit, value);
         }
 
-        private List<string> _quickLaunchOrder = [];
+        private List<string> _quickLaunchOrder = new List<string>();
         public List<string> QuickLaunchOrder
         {
             get => _quickLaunchOrder;
@@ -334,13 +345,6 @@ namespace RetroBar.Utilities
             set => Set(ref _showExitMenuItem, value);
         }
 
-        private bool _showEndTaskButton = false;
-        public bool ShowEndTaskButton
-        {
-            get => _showEndTaskButton;
-            set => Set(ref _showEndTaskButton, value);
-        }
-
         private bool _showStartButtonMultiMon = false;
         public bool ShowStartButtonMultiMon
         {
@@ -394,7 +398,7 @@ namespace RetroBar.Utilities
 
         public string[] PinnedNotifyIcons
         {
-            get => [];
+            get => new string[0];  // oder Array.Empty<string>()
             set
             {
                 // Migrate to NotifyIconBehaviors

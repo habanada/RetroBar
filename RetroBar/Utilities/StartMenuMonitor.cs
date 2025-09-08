@@ -319,7 +319,7 @@ namespace RetroBar.Utilities
         {
             public int GetIdentity(out uint pIdentity);
             public int Append(object unknown);
-            public int GetHandle(out nint phMonitor);
+            public int GetHandle(out IntPtr phMonitor);
             public int IsConnected(out bool pfConnected);
             public int IsPrimary(out bool pfPrimary);
             public int GetTrustLevel(out uint level);
@@ -346,13 +346,13 @@ namespace RetroBar.Utilities
             public int GetCount(out uint pcMonitors);
             public int GetConnectedCount(out uint pcMonitors);
             public int GetAt(uint idxMonitor, out IImmersiveMonitor monitor);
-            public int GetFromHandle(nint monitor, out IImmersiveMonitor monitor2);
+            public int GetFromHandle(IntPtr monitor, out IImmersiveMonitor monitor2);
             public int GetFromIdentity(uint identity, out IImmersiveMonitor monitor);
             public int GetImmersiveProxyMonitor(out IImmersiveMonitor monitor);
-            public int QueryService(nint monit, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
+            public int QueryService(IntPtr monit, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
             public int QueryServiceByIdentity(uint monit, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
-            public int QueryServiceFromWindow(nint hwnd, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
-            public int QueryServiceFromPoint(nint point, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
+            public int QueryServiceFromWindow(IntPtr hwnd, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
+            public int QueryServiceFromPoint(IntPtr point, ref Guid guidService, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object service);
             public int GetNextImmersiveMonitor(IMMERSIVE_MONITOR_MOVE_DIRECTION direction, IImmersiveMonitor monitor, out IImmersiveMonitor monitorout);
             public int GetMonitorArray(out object array);
             public int SetFilter(object filter);

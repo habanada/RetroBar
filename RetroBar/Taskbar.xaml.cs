@@ -561,7 +561,7 @@ namespace RetroBar
 
                     if (_mouseDragResize)
                     {
-                        Dispatcher.BeginInvoke(() => {
+                        Dispatcher.BeginInvoke(new Action(() => {
                             int mouseX = e.HookStruct.pt.X;
                             int mouseY = e.HookStruct.pt.Y;
                             // Calculate where the resize edge should be, in case the actual resize operation is lagging behind the mouse
@@ -600,7 +600,7 @@ namespace RetroBar
                                     Settings.Instance.TaskbarWidth -= 1;
                                 }
                             }
-                        });
+                        }));
                         return;
                     }
 

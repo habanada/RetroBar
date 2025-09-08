@@ -12,7 +12,7 @@ namespace RetroBar.Utilities
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private static JsonSerializerOptions options = new()
+        private static JsonSerializerOptions options = new JsonSerializerOptions()
         {
             IgnoreReadOnlyProperties = true,
             WriteIndented = true,
