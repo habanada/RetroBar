@@ -138,7 +138,20 @@ namespace RetroBar.Utilities
             get => _showMultiMon;
             set => Set(ref _showMultiMon, value);
         }
+        private bool _quickLaunchPrimaryOnly = false;
 
+        public bool QuickLaunchPrimaryOnly
+        {
+            get => _quickLaunchPrimaryOnly;
+            set
+            {
+                if (_quickLaunchPrimaryOnly != value)
+                {
+                    _quickLaunchPrimaryOnly = value;
+                    OnPropertyChanged(nameof(QuickLaunchPrimaryOnly));
+                }
+            }
+        }
         private bool _showQuickLaunch = true;
         public bool ShowQuickLaunch
         {

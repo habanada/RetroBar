@@ -92,7 +92,7 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Margin="7">
+    <Grid Height="727">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -101,7 +101,7 @@
             <TabItem Header="{DynamicResource taskbar_tab}">
                 <StackPanel Orientation="Vertical"
                             Margin="10">
-                    <GroupBox Header="{DynamicResource taskbar_appearance}">
+                    <GroupBox Header="{DynamicResource taskbar_appearance}" Height="382">
                         <StackPanel Orientation="Vertical">
                             <Border Style="{StaticResource PreviewBorder}">
                                 <ContentControl x:Name="TaskbarAppearancePreviewControl"
@@ -257,10 +257,14 @@
                                       Visibility="{Binding Edge, Converter={StaticResource edgeOrientationVisibilityConverter}, ConverterParameter=horizontal, Source={x:Static Settings:Settings.Instance}}">
                                 <Label Content="{DynamicResource slide_taskbar_buttons}" />
                             </CheckBox>
+                            <CheckBox x:Name="cbQuickLaunchPrimaryOnly"
+                                IsChecked="{Binding QuickLaunchPrimaryOnly, Source={x:Static Settings:Settings.Instance}, UpdateSourceTrigger=PropertyChanged}">
+                                <Label Content="Show Quick Launch only on primary monitor" />
+                            </CheckBox>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="{DynamicResource notification_area}" Height="245">
-                        <StackPanel Orientation="Vertical">
+                    <GroupBox Header="{DynamicResource notification_area}" Height="266">
+                        <StackPanel Orientation="Vertical" Height="243">
                             <Border Style="{StaticResource PreviewBorder}">
                                 <ContentControl x:Name="NotificationAreaPreviewControl"
                                                 IsHitTestVisible="False"
@@ -334,6 +338,8 @@
                                 <TextBox Text="{Binding ClassicShellPath, Source={x:Static Settings:Settings.Instance}, UpdateSourceTrigger=PropertyChanged}"
              Width="300" Margin="5,0,0,0"/>
                             </DockPanel>
+                            <DockPanel/>
+
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -474,6 +480,27 @@
                     </DockPanel>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="About">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="RetroBar (Fork)" FontWeight="Bold" FontSize="18"/>
+                        <TextBlock Text="This is a fork of RetroBar with some modifications." FontSize="14" Margin="0,5,0,10"/>
+
+                        <TextBlock Text="Fork by Author:" FontWeight="Bold"/>
+                        <TextBlock Text="Selahattin Erkoc (habanada)" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="GitHub Project:" FontWeight="Bold"/>
+                        <TextBlock>
+        <Hyperlink NavigateUri="https://github.com/habanada/RetroBar" RequestNavigate="Hyperlink_RequestNavigate">
+          https://github.com/habanada/RetroBar
+        </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock Text="This fork supports ClassicShell, Quicklaunch on Main Window only" Margin="0,20,0,0"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
         </TabControl>
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"

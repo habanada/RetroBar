@@ -80,7 +80,20 @@ namespace RetroBar
 
             if (Settings.Instance.ShowQuickLaunch)
             {
-                QuickLaunchToolbar.Visibility = Visibility.Visible;
+                if (Settings.Instance.QuickLaunchPrimaryOnly)
+                {
+                    QuickLaunchToolbar.Visibility = Screen.Primary
+                        ? Visibility.Visible
+                        : Visibility.Collapsed;
+                }
+                else
+                {
+                    QuickLaunchToolbar.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                QuickLaunchToolbar.Visibility = Visibility.Collapsed;
             }
 
             if (Settings.Instance.ShowDesktopButton)
@@ -197,6 +210,28 @@ namespace RetroBar
             {
                 PeekDuringAutoHide();
             }
+            else if (e.PropertyName == nameof(Settings.ShowQuickLaunch)
+        || e.PropertyName == nameof(Settings.QuickLaunchPrimaryOnly))
+            {
+                if (Settings.Instance.ShowQuickLaunch)
+                {
+                    if (Settings.Instance.QuickLaunchPrimaryOnly)
+                    {
+                        QuickLaunchToolbar.Visibility = Screen.Primary
+                            ? Visibility.Visible
+                            : Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        QuickLaunchToolbar.Visibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    QuickLaunchToolbar.Visibility = Visibility.Collapsed;
+                }
+            }
+
         }
 
         #region AppBarWindow overrides
