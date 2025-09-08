@@ -1,4 +1,13 @@
-﻿![alt text](https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar")
+THIS IS A FORK OF THE ORIGINAL RETROBAR 08.09.2025﻿ 
+
+Current Changes are:
+
+- can be Compiled with VS 2019
+- has ClassicShell Support
+- you can add my Win95/98 Retro Dark Theme
+
+THE FOLLOWING IS FROM THE ORIGINAL README.MD
+![alt text](https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar")
 
 # RetroBar
 [![Current release](https://img.shields.io/github/v/release/dremin/RetroBar)](https://github.com/dremin/RetroBar/releases/latest) ![Build status](https://github.com/dremin/RetroBar/workflows/RetroBar/badge.svg)
