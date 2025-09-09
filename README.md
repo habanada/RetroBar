@@ -6,6 +6,10 @@ Current Changes are:
 - has ClassicShell Support
 - you can add my Win95/98 Retro Dark Theme
 
+![alt text]([https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar](https://github.com/habanada/RetroBar/blob/master/display1.jpg)")
+![alt text]([https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar](https://github.com/habanada/RetroBar/blob/master/display2.jpg)")
+![alt text]([https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar](https://github.com/habanada/RetroBar/blob/master/startmenu.png)")
+
 THE FOLLOWING IS FROM THE ORIGINAL README.MD
 ![alt text](https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar")
 
