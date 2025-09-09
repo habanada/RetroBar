@@ -8,7 +8,7 @@ Current Changes are:
 
 ![Display1](https://raw.githubusercontent.com/habanada/RetroBar/master/display1.jpg)
 ![Display2](https://raw.githubusercontent.com/habanada/RetroBar/master/display2.jpg)
-![Startmenu](https://raw.githubusercontent.com/habanada/RetroBar/master/startmenu.png)
+![Startmenu](https://raw.githubusercontent.com/habanada/RetroBar/master/startmenu.jpg)
 
 THE FOLLOWING IS FROM THE ORIGINAL README.MD
 ![alt text](https://raw.githubusercontent.com/dremin/retrobar/master/retrobar-preview.png "RetroBar")
